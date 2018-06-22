@@ -1,38 +1,31 @@
-(function() {
+(function () {
   'use strict';
 
   angular
     .module('cotaEasy')
     .controller('LoginController', LoginController);
 
-  /** @ngInject */
-  function LoginController($timeout, webDevTec, toastr) {
+  LoginController.$inject = [
+    '$timeout',
+    '$uibModal',
+    'toastr'
+  ];
+
+  function LoginController($timeout, $uibModal, toastr) {
     var vm = this;
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1529667516013;
-    vm.showToastr = showToastr;
-
-    activate();
-
-    function activate() {
-      getWebDevTec();
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
+    vm.cadastrarNovoUsuario = function () {
+      vm.abrirModalCadastroUsuario();
     }
 
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      vm.classAnimation = '';
-    }
-
-    function getWebDevTec() {
-      vm.awesomeThings = webDevTec.getTec();
-
-      angular.forEach(vm.awesomeThings, function(awesomeThing) {
-        awesomeThing.rank = Math.random();
+    vm.abrirModalCadastroUsuario = function () {
+      var modalInstance = $uibModal.open({
+        ariaLabelledBy: 'Cadastro de usuário',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'app/entities/novo-usuario/novo-usuario.html',
+        controller: 'NovoUsuarioController',
+        controllerAs: 'vm',
+        size: 'md'
       });
     }
   }
