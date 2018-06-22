@@ -3,10 +3,10 @@
 
   angular
     .module('cotaEasy')
-    .controller('MainController', MainController);
+    .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
+  function LoginController($timeout, webDevTec, toastr) {
     var vm = this;
 
     vm.awesomeThings = [];
