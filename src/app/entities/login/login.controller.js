@@ -6,17 +6,11 @@
     .controller('LoginController', LoginController);
 
   LoginController.$inject = [
-    '$timeout',
-    '$uibModal',
-    'toastr'
+    '$uibModal'
   ];
 
-  function LoginController($timeout, $uibModal, toastr) {
+  function LoginController($uibModal) {
     var vm = this;
-
-    vm.cadastrarNovoUsuario = function () {
-      vm.abrirModalCadastroUsuario();
-    }
 
     vm.abrirModalCadastroUsuario = function () {
       var modalInstance = $uibModal.open({

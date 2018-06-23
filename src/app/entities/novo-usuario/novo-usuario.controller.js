@@ -5,11 +5,24 @@
     .module('cotaEasy')
     .controller('NovoUsuarioController', NovoUsuarioController);
 
-  NovoUsuarioController.$inject = [
-
+  NovoUsuarioController.$inject = [ 
+    'Restangular' 
   ];
-  
-  function NovoUsuarioController($timeout, toastr) {
+
+  function NovoUsuarioController(Restangular) {
     var vm = this;
+    vm.usuario = {
+      nome: "",
+      email: "",
+      telefone: "",
+      senha: "",
+      segundaSenha: "",
+      perfil: 0
+    }
+
+    vm.cadastrarNovoUsuario = function() {
+      var teste = Restangular.all('usuarios').getList();
+      console.log(teste);
+    }
   }
 })();

@@ -2,33 +2,37 @@
     <h4 class="modal-title" id="modal-title">Cadastrar novo usuário</h4>
 </div>
 <div class="modal-body" id="modal-body">
-    <form method="post">
+    <form>
         <form-group>
-            <label for="nome">Tipo de usuário:</label>
-            <select class="form-control" name="tipo-usuario" id="tipo-usuario">
+            <label for="nome">Perfil:</label>
+            <select class="form-control" ng-model="vm.usuario.tipo">
                 <option value="0">Usuário</option>
                 <option value="1">Fornecedor</option>
             </select>
         </form-group>
         <form-group>
             <label for="nome">Nome:</label>
-            <input class="form-control" type="text" name="nome" id="nome">
+            <input class="form-control" type="text" ng-model="vm.usuario.nome">
         </form-group>
         <form-group>
             <label for="nome">E-mail:</label>
-            <input class="form-control" type="email" name="email" id="email">
+            <input class="form-control" type="email" ng-model="vm.usuario.email">
+        </form-group>
+        <form-group>
+            <label for="nome">Telefone:</label>
+            <input class="form-control" type="number" ng-model="vm.usuario.telefone">
         </form-group>
         <form-group>
             <label for="nome">Senha:</label>
-            <input class="form-control" type="password" name="senha" id="senha">
+            <input class="form-control" type="password" ng-model="vm.usuario.senha">
         </form-group>
         <form-group>
             <label for="nome">Repetir senha:</label>
-            <input class="form-control" type="password" name="repetir-senha" id="repetir-senha">
+            <input class="form-control" type="password" ng-model="vm.usuario.segundaSenha">
         </form-group>
     </form>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-danger" ng-click="$dismiss()">Sair</button>
-    <button type="submit" class="btn btn-success">Cadastrar</button>
+    <button type="button" class="btn btn-success" ng-click="vm.cadastrarNovoUsuario()">Cadastrar</button>
 </div>
