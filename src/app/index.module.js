@@ -12,6 +12,7 @@
       'restangular', 
       'ngRoute', 
       'ui.bootstrap',
+      'ui.grid',
       'toastr'
     ]);
 })();
