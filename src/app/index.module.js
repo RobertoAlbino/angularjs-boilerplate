@@ -11,7 +11,7 @@
       'ngAria', 
       'restangular', 
       'ngRoute', 
-      'ui.bootstrap', 
+      'ui.bootstrap',
       'toastr'
     ]);
 })();

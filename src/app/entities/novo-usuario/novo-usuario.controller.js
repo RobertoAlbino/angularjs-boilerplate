@@ -6,10 +6,11 @@
     .controller('NovoUsuarioController', NovoUsuarioController);
 
   NovoUsuarioController.$inject = [ 
-    'Restangular' 
+    'Restangular',
+    'toastr' 
   ];
 
-  function NovoUsuarioController(Restangular) {
+  function NovoUsuarioController(Restangular, toastr) {
     var vm = this;
     vm.usuario = {
       nome: "",
@@ -21,8 +22,22 @@
     }
 
     vm.cadastrarNovoUsuario = function() {
-      var teste = Restangular.all('usuarios').getList();
-      console.log(teste);
+      if (!vm.senhaValida()) {
+        toastr.error("As senhas digitadas não são idênticas.");
+        return;
+      }
+
+      var criarUsuario = Restangular.all("usuarios/criar");
+      criarUsuario.post(vm.usuario).then(function(retornoCadastro) {
+        retornoCadastro.sucesso ? toastr.success(retornoCadastro.mensagem) : toastr.error(retornoCadastro.mensagem);
+      }),
+      function(error) {
+        toastr.error(error);
+      };
+    }
+
+    vm.senhaValida = function() {
+      return vm.usuario.senha === vm.usuario.segundaSenha ? true : false; 
     }
   }
 })();

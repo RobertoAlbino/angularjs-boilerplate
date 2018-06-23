@@ -1,7 +1,9 @@
 {
   "name": "cotaEasy",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "angular-ui-grid": "^4.6.0"
+  },
   "scripts": {
     "test": "gulp test"
   },
