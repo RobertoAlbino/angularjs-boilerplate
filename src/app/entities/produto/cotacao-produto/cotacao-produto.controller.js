@@ -30,7 +30,6 @@
         var fornecedores = Restangular.all("usuarios/getAllFornecedores");
         fornecedores.post().then(function(response) {
           if (response.sucesso) {
-            console.log(response.objeto);
             vm.listaFornecedores = response.objeto;
           } else {
             toastr.error(response.mensagem);
@@ -38,8 +37,14 @@
         });
       }
 
+      vm.removerFornecedor = function(item) {
+        vm.listaFornecedores.map(function(fornecedor) {
+            return fornecedor.email !== item.email;
+        });
+      }
+
       vm.iniciarCotacao = function() {
-        var produto = Restangular.all("produtos/cadastrarProduto");
+        var cotacao = Restangular.all("cotacao/novaCotacao");
         produto.post(vm.produto).then(function(response) {
           if (response.sucesso) {
             toastr.success(vm.isEdicao ? "Produto atualizado com sucesso." : "Produto cadastrado com suceso.");

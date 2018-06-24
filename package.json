@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.1.0",
+    "angular-sanitize": "^1.5.3",
     "ui-select": "^0.19.8"
   }
 }
