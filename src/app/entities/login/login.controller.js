@@ -23,7 +23,7 @@
       $uibModal.open({
         ariaLabelledBy: 'Cadastro de usuário',
         ariaDescribedBy: 'modal-body',
-        templateUrl: 'app/entities/novo-usuario/novo-usuario.html',
+        templateUrl: 'app/entities/usuario/novo-usuario/novo-usuario.html',
         controller: 'NovoUsuarioController',
         controllerAs: 'vm',
         size: 'md'
@@ -44,10 +44,7 @@
         } else {
           toastr.error(retornoLogin.mensagem);
         }
-      }),
-      function(error) {
-        toastr.error(error);
-      };
+      });
     }
 
     vm.loginValido = function() {

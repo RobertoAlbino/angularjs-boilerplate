@@ -11,16 +11,16 @@
         templateUrl: 'app/entities/login/login.html'
       })
       .when('/menu-usuario', {
-        templateUrl: 'app/entities/menu-usuario/menu-usuario.html'
+        templateUrl: 'app/entities/usuario/menu-usuario/menu-usuario.html'
       })
       .when('/menu-fornecedor', {
-        templateUrl: 'app/entities/menu-fornecedor/menu-fornecedor.html'
+        templateUrl: 'app/entities/fornecedor/menu-fornecedor/menu-fornecedor.html'
       })
       .when('/gerenciar-produtos', {
-        templateUrl: 'app/entities/gerenciar-produtos/gerenciar-produtos.html'
+        templateUrl: 'app/entities/produto/gerenciar-produtos/gerenciar-produtos.html'
       })
       .when('/produtos-cotados', {
-        templateUrl: 'app/entities/produtos-cotados/produtos-cotados.html'
+        templateUrl: 'app/entities/produto/produtos-cotados/produtos-cotados.html'
       })
       .otherwise({
         redirectTo: '/'
