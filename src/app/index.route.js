@@ -20,7 +20,7 @@
         templateUrl: 'app/entities/gerenciar-produtos/gerenciar-produtos.html'
       })
       .when('/produtos-cotados', {
-        templateUrl: 'app/entities/gerenciar-produtos/gerenciar-produtos.html'
+        templateUrl: 'app/entities/produtos-cotados/produtos-cotados.html'
       })
       .otherwise({
         redirectTo: '/'

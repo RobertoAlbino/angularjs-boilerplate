@@ -15,5 +15,6 @@
     toastrConfig.positionClass = 'toast-top-right';
     // Configurações Restangular
     RestangularProvider.setBaseUrl('http://localhost:8080/api/');
+    RestangularProvider.setDefaultHeaders({ "Content-Type": 'application/json' });
   }
 })();
