@@ -22,6 +22,9 @@
       .when('/produtos-cotados', {
         templateUrl: 'app/entities/produto/produtos-cotados/produtos-cotados.html'
       })
+      .when('/gerenciar-lances', {
+        templateUrl: 'app/entities/fornecedor/gerenciar-lances/gerenciar-lances.html'
+      })
       .otherwise({
         redirectTo: '/'
       });

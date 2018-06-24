@@ -16,12 +16,16 @@
     function CotacaoProdutoController($uibModal, $uibModalInstance, Restangular, toastr, produto) {
       var vm = this;
       vm.usuarioLogado = JSON.parse(window.localStorage.getItem('usuarioLogado'));
-      vm.cotacao = {
-        dataInicial: new Date(),
-        dataFinal: new Date(),
-        quantidade: 1,
-        produto: produto,
-        usuario: produto.usuario,
+      vm.dataInicio = new Date();
+      vm.dataFinal = new Date();
+      vm.cotacaoModel = {
+        cotacao: {
+            dataInicio: new Date(),
+            dataFinal: new Date(),
+            quantidade: 1,
+            produto: produto,
+            usuario: produto.usuario,
+        },
         fornecedores: []
       }
       vm.listaFornecedores = [];
@@ -43,11 +47,24 @@
         });
       }
 
+      vm.atualizarStatusCotadoProduto = function(produto) {
+          produto.cotado = true;
+          var produtos = Restangular.all("produtos/cadastrarProduto");
+          produtos.post(produto).then(function(response) {
+          if (!response.sucesso)
+            toastr.error(response.mensagem);
+        });
+      }
+
       vm.iniciarCotacao = function() {
-        var cotacao = Restangular.all("cotacao/novaCotacao");
-        produto.post(vm.produto).then(function(response) {
+        vm.cotacaoModel.cotacao.dataInicio = vm.dataInicio.toLocaleString();
+        vm.cotacaoModel.cotacao.dataFinal =  vm.dataFinal.toLocaleString();
+        vm.cotacaoModel.fornecedores = vm.listaFornecedores;
+        var cotacao = Restangular.all("cotacoes/novaCotacao");
+        cotacao.post(vm.cotacaoModel).then(function(response) {
           if (response.sucesso) {
-            toastr.success(vm.isEdicao ? "Produto atualizado com sucesso." : "Produto cadastrado com suceso.");
+            toastr.success("Cotação iniciada para: " + vm.cotacaoModel.cotacao.produto.nome);
+            vm.atualizarStatusCotadoProduto(vm.cotacaoModel.cotacao.produto);
             $uibModalInstance.close(true);
           } else {
             toastr.error(response.mensagem);

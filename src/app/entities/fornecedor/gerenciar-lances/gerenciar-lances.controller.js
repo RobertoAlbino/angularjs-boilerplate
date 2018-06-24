@@ -3,15 +3,15 @@
 
     angular
         .module('cotaEasy')
-        .controller('GerenciarProdutosController', GerenciarProdutosController);
+        .controller('GerenciarLancesController', GerenciarLancesController);
 
-    GerenciarProdutosController.$inject = [
+    GerenciarLancesController.$inject = [
         '$uibModal',
         'Restangular',
         'toastr'
     ];
 
-    function GerenciarProdutosController($uibModal, Restangular, toastr) {
+    function GerenciarLancesController($uibModal, Restangular, toastr) {
         var vm = this;
         vm.usuarioLogado = JSON.parse(window.localStorage.getItem('usuarioLogado'));
 
