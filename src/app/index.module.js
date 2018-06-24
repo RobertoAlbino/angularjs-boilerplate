@@ -14,6 +14,7 @@
       'ui.grid.saveState', 'ui.grid.selection',
       'ui.grid.moveColumns', 'ui.grid.exporter',
       'ui.grid.importer', 'ui.grid.pagination',
-      'ui.bootstrap.tooltip', 'ui.grid.expandable'
+      'ui.bootstrap.tooltip', 'ui.grid.expandable',
+      'ui.select', 'ngSanitize'
     ]);
 })();

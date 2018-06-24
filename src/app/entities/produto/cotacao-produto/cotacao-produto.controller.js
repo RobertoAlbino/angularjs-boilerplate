@@ -21,14 +21,23 @@
         dataFinal: new Date(),
         quantidade: 1,
         produto: produto,
-        usuario: produto.usuario
+        usuario: produto.usuario,
+        fornecedores: []
       }
-      vm.cotacao.fornecedores = [];
-      vm.cotacao.fornecedores.push({
-        id: 0,
-        nome: "Roberto"
-      });
-      
+      vm.listaFornecedores = [];
+
+      vm.buscarTodosFornecedores = function() {
+        var fornecedores = Restangular.all("usuarios/getAllFornecedores");
+        fornecedores.post().then(function(response) {
+          if (response.sucesso) {
+            console.log(response.objeto);
+            vm.listaFornecedores = response.objeto;
+          } else {
+            toastr.error(response.mensagem);
+          }
+        });
+      }
+
       vm.iniciarCotacao = function() {
         var produto = Restangular.all("produtos/cadastrarProduto");
         produto.post(vm.produto).then(function(response) {
@@ -40,6 +49,8 @@
           }
         });
       }
+
+      vm.buscarTodosFornecedores();
     }
   })();
   

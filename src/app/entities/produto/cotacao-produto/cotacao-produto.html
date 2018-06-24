@@ -25,13 +25,13 @@
         </form-group>
         <form-group>
             <label>Fornecedores autorizados:</label>
-            <ui-select multiple ng-model="vm.cotacao.fornecedores" on-select="" on-remove="vm.removerContatoEmbarcador($model, $item)" 
+            <ui-select multiple ng-model="vm.listaFornecedores" on-select="" on-remove="vm.removerContatoEmbarcador($model, $item)" 
                 refresh-delay="0">
                 <ui-select-match placeholder="Selecione o(s) fornecedores(s)">
                     <span>{{$item.nome}}</span>
                 </ui-select-match>
-                <ui-select-choices repeat="tc.id as tc in vm.cotacao.fornecedores">
-                    <div ng-bind-html="tc.nome"></div>
+                <ui-select-choices repeat="tc.id as tc in vm.listaFornecedores | propsFilter: {Nome: $select.search}">
+                    <div ng-bind-html="tc.nome | highlight: $select.search"></div>
                 </ui-select-choices>
             </ui-select>
         </form-group>

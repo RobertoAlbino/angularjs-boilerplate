@@ -51,6 +51,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.1.0"
+    "@fortawesome/fontawesome-free": "^5.1.0",
+    "ui-select": "^0.19.8"
   }
 }
