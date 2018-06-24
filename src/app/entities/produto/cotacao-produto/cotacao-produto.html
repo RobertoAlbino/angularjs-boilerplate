@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Iniciar cotação do produto</h4>
+</div>
+<div class="modal-body" id="modal-body">
+    <form>
+        <form-group>
+            <label for="nome">Código:</label>
+            <input class="form-control" type="text" ng-model="vm.cotacao.produto.id">
+        </form-group>
+        <form-group>
+            <label for="nome">Nome:</label>
+            <input class="form-control" type="text" ng-model="vm.cotacao.produto.nome">
+        </form-group>
+        <form-group>
+            <label for="nome">Data inicial cotação:</label>
+            <input class="form-control" type="date" ng-model="vm.cotacao.dataInicial">
+        </form-group>
+        <form-group>
+            <label for="nome">Data final cotação:</label>
+            <input class="form-control" type="date" ng-model="vm.cotacao.dataFinal">
+        </form-group>
+        <form-group>
+            <label for="nome">Quantidade:</label>
+            <input class="form-control" type="number" ng-model="vm.cotacao.quantidade">
+        </form-group>
+        <form-group>
+            <label>Fornecedores autorizados:</label>
+            <ui-select multiple ng-model="vm.cotacao.fornecedores" on-select="" on-remove="vm.removerContatoEmbarcador($model, $item)" 
+                refresh-delay="0">
+                <ui-select-match placeholder="Selecione o(s) fornecedores(s)">
+                    <span>{{$item.nome}}</span>
+                </ui-select-match>
+                <ui-select-choices repeat="tc.id as tc in vm.cotacao.fornecedores">
+                    <div ng-bind-html="tc.nome"></div>
+                </ui-select-choices>
+            </ui-select>
+        </form-group>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger"  ng-click="$dismiss()">Sair</button>
+    <button type="button" class="btn btn-success" ng-click="vm.iniciarCotacao(vm.produto)">Iniciar cotação</button>
+</div>

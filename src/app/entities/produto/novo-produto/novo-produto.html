@@ -3,17 +3,20 @@
 </div>
 <div class="modal-body" id="modal-body">
     <form>
-        <form-group ng-show="vm.isEdicao">
-            <label>Código:</label>
-            <input class="form-control" type="text" ng-model="vm.produto.id">
-        </form-group>
         <form-group>
             <label for="nome">Nome:</label>
-            <input class="form-control" type="email" ng-model="vm.produto.nome">
+            <input class="form-control" type="text" ng-model="vm.produto.nome">
+        </form-group>
+        <form-group>
+            <label>Produto já cotado:</label>
+            <select class="form-control" ng-model="vm.produto.cotado">
+                <option ng-selected="vm.produto.cotado" value="true">Sim</option>
+                <option ng-selected="!vm.produto.cotado" value="false">Não</option>
+            </select>
         </form-group>
     </form>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-danger" ng-click="$dismiss()">Sair</button>
-    <button type="button" class="btn btn-success" ng-click="vm.cadastrarProduto()">{{ vm.operacao }}</button>
-</div>  
+    <button type="button" class="btn btn-success" ng-click="vm.cadastrarProduto(vm.produto)">{{ vm.operacao }}</button>
+</div>

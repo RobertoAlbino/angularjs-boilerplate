@@ -42,6 +42,8 @@
                         return isEdicao;
                     },
                 }
+            }).result.then(function() {
+                vm.getAllProdutosByUsuario();
             });
         }
 
@@ -57,6 +59,26 @@
             });
         }
 
+        vm.abrirModalCotacao = function(produto) {
+            if (produto.cotado) {
+                toastr.error("O produto já está em cotação.");
+                return;
+            }
+            $uibModal.open({
+                ariaLabelledBy: 'Iniciar cotação',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'app/entities/produto/cotacao-produto/cotacao-produto.html',
+                controller: 'CotacaoProdutoController',
+                controllerAs: 'vm',
+                size: 'md',
+                resolve: {
+                    produto: function() {
+                        return produto;
+                    }
+                }
+            });
+        }
+
         vm.gridOptions = {
             data: vm.getAllProdutosByUsuario(),
             enableFiltering: true,
@@ -66,8 +88,9 @@
                 name: 'Opções',
                 enableFiltering: false,
                 cellTemplate: '<div ng-class="\'ui-grid-cell-contents text-center\'">\
-                                    \<button type="button" ng-class="\'btn btn-xs btn-success\'">\
-                                        Abrir cotação\
+                                    \<button type="button" ng-click="grid.appScope.vm.abrirModalCotacao(row.entity)" ng-class="!row.entity.cotado ? \'btn btn-xs btn-success\' : \'btn btn-xs btn-info\'">\
+                                        <div ng-if="row.entity.cotado">Produto já cotado</div>\
+                                        <div ng-if="!row.entity.cotado">Abrir cotação</div>\
                                     </button>\
                                     \<button type="button" ng-click="grid.appScope.vm.abrirModalProduto(null, false)" ng-class="\'btn btn-xs btn-primary\'">\
                                         Novo produto\
