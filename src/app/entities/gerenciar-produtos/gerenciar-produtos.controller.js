@@ -31,23 +31,34 @@
         vm.gridOptions = {
             data: vm.getAllProdutosByUsuario(),
             enableFiltering: true,
-            columnDefs: [{
+            enableColumnMenus: false,
+            columnDefs: [{                
                 name: 'Opções',
-                cellTemplate: '<div <button type="button" title="teste" ng-click="grid.appScope.vm.detalhes(row.entity.id)" \ class="btn btn-xs btn-primary">\
-                                        <i class="fa fa-list"></i>\
+                enableFiltering: false,
+                cellTemplate: '<div ng-class="\'ui-grid-cell-contents text-center\'">\
+                                    \<button type="button" ng-class="\'btn btn-xs btn-primary\'">\
+                                        Novo produto\
                                     </button>\
-                                    \<button type="button" title="teste" ng-click="grid.appScope.vm.chapearMotorista(row.entity.id)" \ ng-class="{ \'btn btn-xs btn-warning\': true }">\
-                                        <i class="fa fa-truck"></i>\
+                                    \<button type="button" ng-class="\'btn btn-xs btn-success\'">\
+                                        Abrir cotação\
                                     </button>\
-                               </div>'
+                                    \<button type="button" ng-class="\'btn btn-xs btn-warning\'">\
+                                        Editar\
+                                    </button>\
+                                    \<button type="button" ng-click="grid.appScope.vm.detalhes(row.entity.id)" \ ng-class="\'btn btn-xs btn-danger\'">\
+                                        Remover \
+                                    </button>\
+                                </div>'
             },
             {
                 name: 'Código',
-                field: 'id'
+                field: 'id',
+                type: 'number'
             },
             {
                 name: 'Nome',
-                field: 'nome'
+                field: 'nome',
+                type: 'text'
             }]
         }
     }

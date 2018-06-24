@@ -13,6 +13,8 @@
   
     function MenuUsuarioController($uibModal, $state, toastr) {
       var vm = this;
+
+      vm.saudarUsuarioLogado = function() {}
     }
   })();
   
