@@ -15,9 +15,9 @@
         var vm = this;
         vm.usuarioLogado = JSON.parse(window.localStorage.getItem('usuarioLogado'));
 
-        vm.getAllProdutosByUsuario = function () {
-            var produtos = Restangular.all("produtos/getAllByUsuarioId");
-            produtos.post(vm.usuarioLogado).then(function (response) {
+        vm.getCotacoesDisponiveis = function () {
+            var cotacoes = Restangular.all("cotacoes/getCotacoesDisponiveisFornecedor");
+            cotacoes.post(vm.usuarioLogado).then(function (response) {
                 if (response.sucesso) {
                     vm.gridOptions.data = response.objeto;
                 } else {
@@ -26,89 +26,72 @@
             });
         }
 
-        vm.abrirModalProduto = function(entidadeProduto, isEdicao) {
+        vm.abrirModalLance = function(cotacao) {
             $uibModal.open({
-                ariaLabelledBy: 'Cadastro de produto',
+                ariaLabelledBy: 'Gerar lance',
                 ariaDescribedBy: 'modal-body',
-                templateUrl: 'app/entities/produto/novo-produto/novo-produto.html',
-                controller: 'NovoProdutoController',
+                templateUrl: 'app/entities/fornecedor/gerar-lance/gerar-lance.html',
+                controller: 'GerarLanceController',
                 controllerAs: 'vm',
                 size: 'md',
                 resolve: {
-                    entidadeProduto: function() {
-                        return entidadeProduto;
-                    },
-                    isEdicao: function() {
-                        return isEdicao;
-                    },
-                }
-            }).result.then(function() {
-                vm.getAllProdutosByUsuario();
-            });
-        }
-
-        vm.excluirProduto = function(idProduto) {
-            var produto = Restangular.all("produtos/deleteById");
-            produto.post(idProduto).then(function (response) {
-                if (response.sucesso) {
-                    vm.getAllProdutosByUsuario();
-                    toastr.success(response.mensagem);
-                } else {
-                    toastr.error(response.mensagem);
-                }
-            });
-        }
-
-        vm.abrirModalCotacao = function(produto) {
-            if (produto.cotado) {
-                toastr.error("O produto já está em cotação.");
-                return;
-            }
-            $uibModal.open({
-                ariaLabelledBy: 'Iniciar cotação',
-                ariaDescribedBy: 'modal-body',
-                templateUrl: 'app/entities/produto/cotacao-produto/cotacao-produto.html',
-                controller: 'CotacaoProdutoController',
-                controllerAs: 'vm',
-                size: 'md',
-                resolve: {
-                    produto: function() {
-                        return produto;
+                    cotacao: function() {
+                        return cotacao;
                     }
                 }
             });
         }
 
         vm.gridOptions = {
-            data: vm.getAllProdutosByUsuario(),
+            data: vm.getCotacoesDisponiveis(),
             enableFiltering: true,
             enableColumnMenus: false,
             paginationPageSizes: [10, 25, 50, 100, 250, 500],
             columnDefs: [{                
                 name: 'Opções',
+                width: '20%',
                 enableFiltering: false,
                 cellTemplate: '<div ng-class="\'ui-grid-cell-contents text-center\'">\
-                                    \<button type="button" ng-click="grid.appScope.vm.abrirModalCotacao(row.entity)" ng-class="!row.entity.cotado ? \'btn btn-xs btn-success\' : \'btn btn-xs btn-info\'">\
-                                        <div ng-if="row.entity.cotado">Produto já cotado</div>\
-                                        <div ng-if="!row.entity.cotado">Abrir cotação</div>\
-                                    </button>\
-                                    \<button type="button" ng-click="grid.appScope.vm.abrirModalProduto(row.entity, true)" ng-class="\'btn btn-xs btn-warning\'">\
-                                        Editar\
-                                    </button>\
-                                    \<button type="button" ng-click="grid.appScope.vm.excluirProduto(row.entity.id)" \ ng-class="\'btn btn-xs btn-danger\'">\
-                                        Remover\
+                                    \<button type="button" ng-click="grid.appScope.vm.abrirModalLance(row.entity)" ng-class="\'btn btn-xs btn-success\'">\
+                                        Enviar lance</div>\
                                     </button>\
                                 </div>'
             },
             {
-                name: 'Código',
+                width: '10%',
+                name:  'Código',
                 field: 'id',
-                type: 'number'
+                type:  'number'
             },
             {
-                name: 'Nome',
-                field: 'nome',
-                type: 'text'
+                width: '25%',
+                name:  'Produto',
+                field: 'produto.nome',
+                type:  'text'
+            },
+            {
+                width: '25%',
+                name:  'Comprador',
+                field: 'usuario.nome',
+                type:  'text'
+            },
+            {
+                width: '15%',
+                name:  'Quantidade desejada',
+                field: 'quantidade',
+                type:  'number'
+            },
+            {
+                width: '15%',
+                name:  'Data inicial cotação',
+                field: 'dataInicio',
+                type:  'date'
+            },
+            {
+                width: '15%',
+                name:  'Data final cotação',
+                field: 'dataFinal',
+                type:  'date'
             }]
         }
     }

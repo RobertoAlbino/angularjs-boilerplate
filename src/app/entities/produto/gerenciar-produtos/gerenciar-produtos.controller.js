@@ -89,7 +89,7 @@
                 enableFiltering: false,
                 cellTemplate: '<div ng-class="\'ui-grid-cell-contents text-center\'">\
                                     \<button type="button" ng-click="grid.appScope.vm.abrirModalCotacao(row.entity)" ng-class="!row.entity.cotado ? \'btn btn-xs btn-success\' : \'btn btn-xs btn-info\'">\
-                                        <div ng-if="row.entity.cotado">Produto já cotado</div>\
+                                        <div ng-if="row.entity.cotado">Produto em cotação :)</div>\
                                         <div ng-if="!row.entity.cotado">Abrir cotação</div>\
                                     </button>\
                                     \<button type="button" ng-click="grid.appScope.vm.abrirModalProduto(row.entity, true)" ng-class="\'btn btn-xs btn-warning\'">\
