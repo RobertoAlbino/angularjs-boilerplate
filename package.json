@@ -50,7 +50,7 @@
     "uglify-save-license": "~0.4.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "8.9.4"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.1.0",
