@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "gulp test",
-    "postinstall": "npm install && bower install"
+    "postinstall": "bower install"
   },
   "devDependencies": {
     "estraverse": "~4.1.0",
