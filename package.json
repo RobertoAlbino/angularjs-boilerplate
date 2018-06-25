@@ -2,7 +2,7 @@
   "name": "cotaEasy",
   "version": "0.0.0",
   "scripts": {
-    "start": "node server.js",
+    "start": "bower install",
     "test": "gulp test"
   },
   "devDependencies": {
