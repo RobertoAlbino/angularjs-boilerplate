@@ -2,8 +2,6 @@
   "name": "cotaEasy",
   "version": "1.0.0",
   "scripts": {
-    "build": "gulp",
-    "heroku-postbuild": "gulp",
     "start": "node server.js",
     "test": "gulp test",
     "postinstall": "bower install && gulp build"
