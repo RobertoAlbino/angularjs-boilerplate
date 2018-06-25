@@ -2,6 +2,7 @@
   "name": "cotaEasy",
   "version": "0.0.0",
   "scripts": {
+    "start": "node server.js",
     "test": "gulp test"
   },
   "devDependencies": {
@@ -53,6 +54,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.1.0",
     "angular-sanitize": "^1.5.3",
+    "express": "^4.16.3",
     "ui-select": "^0.19.8"
   }
 }
