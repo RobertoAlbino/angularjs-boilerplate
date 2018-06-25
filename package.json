@@ -2,10 +2,11 @@
   "name": "cotaEasy",
   "version": "1.0.0",
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp",
+    "heroku-postbuild": "gulp",
     "start": "node server.js",
     "test": "gulp test",
-    "postinstall": "bower install && node server.js"
+    "postinstall": "bower install && gulp build"
   },
   "devDependencies": {
     "estraverse": "~4.1.0",
