@@ -1,3 +1,4 @@
 git add --all
-git commit -m "heroku"
+git commit -m "Auto Commit"
 git push heroku master
+git push origin master
