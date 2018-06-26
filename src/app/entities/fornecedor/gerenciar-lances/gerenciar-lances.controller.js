@@ -52,7 +52,7 @@
                 width: '20%',
                 enableFiltering: false,
                 cellTemplate: '<div ng-class="\'ui-grid-cell-contents text-center\'">\
-                                    \<button type="button" ng-click="grid.appScope.vm.abrirModalLance(row.entity)" ng-class="\'btn btn-xs btn-success\'">\
+                                    \<button type="button" ng-click="grid.appScope.vm.abrirModalLance(row.entity)" ng-class="\'btn btn-xs btn-primary\'">\
                                         Enviar lance</div>\
                                     </button>\
                                 </div>'
