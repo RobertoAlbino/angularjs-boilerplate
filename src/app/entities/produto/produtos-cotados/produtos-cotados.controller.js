@@ -27,6 +27,22 @@
             });
         }
 
+        vm.abrirModalLances = function(cotacao) {
+            $uibModal.open({
+                ariaLabelledBy: 'Acompanhar lances',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'app/entities/lances/acompanhar-lances/acompanhar-lances-modal.html',
+                controller: 'AcompanharLancesModalController',
+                controllerAs: 'vm',
+                size: 'lg',
+                resolve: {
+                    cotacao: function() {
+                        return cotacao;
+                    }
+                }
+            });
+        }
+
         vm.gridOptions = {
             data: vm.getProdutosCotados(),
             enableFiltering: true,
@@ -37,7 +53,7 @@
                 width: '20%',
                 enableFiltering: false,
                 cellTemplate: '<div ng-class="\'ui-grid-cell-contents text-center\'">\
-                                \<button type="button" ng-click="grid.appScope.vm.abrirModalLance(row.entity)" ng-class="\'btn btn-xs btn-success\'">\
+                                \<button type="button" ng-click="grid.appScope.vm.abrirModalLances(row.entity)" ng-class="\'btn btn-xs btn-success\'">\
                                     Ver lances </div>\
                                 </button>\
                             </div>'

@@ -25,6 +25,9 @@
       .when('/gerenciar-lances', {
         templateUrl: 'app/entities/fornecedor/gerenciar-lances/gerenciar-lances.html'
       })
+      .when('/listar-fornecedores', {
+        templateUrl: 'app/entities/usuario/listar-fornecedores/listar-fornecedores.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
