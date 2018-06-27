@@ -12,17 +12,3 @@
 .thumbnail img.pull-right {
   width: 50px;
 }
-
-.ui-grid-icon-down-dir:before {
-  content: '\25bc';
-}
-.ui-grid-icon-up-dir:before {
-  content: '\25b2';
-}
-
-.ui-grid-selection-row-header-buttons.ui-grid-row-selected:before{
-    content:'\2714' !important;
-}
-.ui-grid-all-selected:before{
-    content:'\2714' !important;
-}
