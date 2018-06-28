@@ -52,9 +52,21 @@
         }
       },
       {
-        width: '50%',
+        width: '25%',
         name: 'Fornecedor',
         field: 'fornecedor.nome',
+        type: 'date'
+      },
+      {
+        width: '25%',
+        name: 'Email',
+        field: 'fornecedor.email',
+        type: 'date'
+      },
+      {
+        width: '20%',
+        name: 'Telefone',
+        field: 'fornecedor.telefone',
         type: 'date'
       }]
     }
